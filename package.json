@@ -1,0 +1,29 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.test.js --timeout=10000",
+    "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "v8.11.1"
+  },
+  "author": "Rohit Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.1",
+    "moment": "^2.22.2",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0"
+  }
+}

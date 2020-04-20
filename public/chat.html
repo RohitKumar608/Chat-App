@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Node Chat App</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body class="chat">
+	<div class="chat__sidebar">
+		<h3>Peoples</h3>
+		<div id="users"></div>
+	</div>
+	<div class="chat__main">
+		<div class="welcome_div" style='background-image:url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/15/30/4656e81f6dc57c5.jpg);width: 100%;height: 100%;'>
+			<h3 style="color: gold;margin-top: 13%;" >Welcome To Chat App</h3>
+		</div>
+		<div class="userNameDiv">
+			<span class="userName"></span>
+			<div class="">
+				<span style="display: none;" class="last_seen_text">Last Seen </span>
+				<span class="last_seen"></span>
+		</div>
+		</div>
+	<ol id="message" class="chat__messages"></ol>
+	<div class="chat__footer" style="display: none;">
+		<div style="width: 60%;float: left;">
+			<form id="send-message">
+				<textarea style="width: 70%;" id="write_message" name="message" autofocus="off" autocomplete="off"></textarea>
+				<button type="submit">Send</button>
+				<button id="send-location">Send Location</button>
+			</form>
+			
+	   </div>
+		<div style="width: 30%;">
+		  <form method="post" id="image_upload" action="/chat-image"  enctype="multipart/form-data">
+		  		<input type="file" id="chat_image" name="chat_image" value="upload" />
+		  		<input type="hidden" id="login_userid" name="login_userid">
+				<input type="hidden" id="send_message_userid" name="send_message_userid">
+		  		<button type="submit" id="upload-image">Upload</button>
+		  </form>
+		</div>
+</div>
+</div>
+<script id="message-template" type="text/template">
+	<div class="message" style="{{float}}">
+		<div class="message__title">
+			<h4 style="color:black">{{from}}<h4>
+			<span style="color:black">{{createdAt}}</span>
+		</div>
+		<div class="message__body">
+			<p>{{text}}</p>
+		</div>
+	</div>
+</script>
+<script id="location-template" type="text/template">
+	
+	<li class="message" style="{{float}}">
+		<div class="message__title">
+			<h4>{{from}}<h4>
+			<span>{{createdAt}}</span>
+		</div>
+		<div class="message__body">
+			<a target="_blank" href="{{text}}">My current Location</a>
+		</div>
+	</li>
+	
+
+</script>
+ <script id="image-template" type="text/template">
+	
+	<li class="message" style="{{float}}">
+		<div class="message__title">
+			<h4>{{from}}<h4>
+			<span>{{createdAt}}</span>
+		</div>
+		<div class="message__body">
+			<img src="/uploads/{{text}}" style="width: 50px;height: 51px;margin-right: 18px;float: right;margin-top: -26px" />
+		</div>
+	</li>
+	
+
+</script>
+<script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/js/notify.js"></script>
+<script type="text/javascript" src="/js/libs/mustache.js"></script>
+<script type="text/javascript" src="/js/libs/moment.js"></script>
+<script type="text/javascript" src="/js/libs/deparam.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/js/chat.js"></script>
+</body>
+</html>
